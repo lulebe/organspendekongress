@@ -54,10 +54,12 @@ const Workshop = sequelize.define('Workshop', {
 })
 
 Workshop.belongsToMany(User, {
+  through: 'UserWorkshops',
   onDelete: 'CASCADE',
   onUpdate: 'CASCADE'
 })
 User.belongsToMany(Workshop, {
+  through: 'UserWorkshops',
   onDelete: 'CASCADE',
   onUpdate: 'CASCADE'
 })
