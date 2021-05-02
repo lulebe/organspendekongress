@@ -1,0 +1,37 @@
+{% extends "base.twig" %}
+
+{% block title %}Workshops{% endblock %}
+
+{% block content %}
+  
+  {% if error %}
+  <div class="main-wrapper">
+    <p class="error">Da scheint etwas schief gelaufen zu sein. Fülle bitte alle Textfelder korrekt aus ;)</p>
+  </div>
+  {% endif %}
+
+  <div class="main-wrapper">
+
+    <h1>Workshop Anmeldung</h1>
+
+    <form action="/registerworkshops" method="POST">
+      <label for="inp-lastname">Nachname:</label>
+      <input type="text" name="lastname" id="inp-lastname" placeholder="Mustermann">
+      <label for="inp-lastname">Vorname:</label>
+      <input type="text" name="firstname" id="inp-firstname" placeholder="Erika">
+      <label for="inp-lastname">E-Mailadresse:</label>
+      <input type="email" name="mail" id="inp-mail" placeholder="em@example.org">
+      <br>
+      {% for slot in workshops %}
+        <strong>Slot {{slot.slot}}</strong><br><br>
+        {% for ws in slot.workshops %}
+        <input type="radio" name="slot{{slot.slot}}" id="wsr-{{slot.slot}}-{{ws.id}}" {% if ws.free == 0 %}disabled{% endif %}>
+        <label for="wsr-{{slot.slot}}-{{ws.id}}" class="{% if ws.free == 0 %}disabled{% endif %} {% if ws.free <= 2 and ws.free > 0 %}rare{% endif %}">{{ws.title}} (freie Plätze: {{ws.free}})</label><br>
+        {% endfor %}
+        <br><br>
+      {% endfor %}
+      <p>Bitte prüfe deine Angaben nochmals vor dem Absenden.</p>
+      <div class="center"><button type="submit">eintragen</button></div>
+    </form>
+  </div>
+{% endblock %}

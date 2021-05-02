@@ -1,6 +1,8 @@
-$primary-color: #ffbb00;
-$primary-color-dark: #cc9900;
+$primary-color: #0bb8a6;
+$primary-color-dark: #0b685f;
+$warning-color: #ff6688;
 
+@import "admin";
 
 * {
   box-sizing: border-box;
@@ -12,7 +14,11 @@ html, body {
 }
 
 body {
-  background-color: #f3f3f3;
+  background-image: url('/assets/hd_processed.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
 }
@@ -23,9 +29,65 @@ a {
   &:visited {
     color: $primary-color;
   }
-  &:hover {
+  &:not(.btn):hover {
     color: $primary-color-dark;
   }
+}
+
+.error {
+  color: $warning-color;
+  font-weight: bold;
+}
+
+fieldset {
+  border: 1px solid rgba(0,0,0,0.3);
+}
+
+button, .btn {
+  border-radius: 100px;
+  padding: 12px 16px;
+  font-size: 1.2rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: transform 0.05s;
+  outline: none;
+  background: $primary-color;
+  color: white;
+  border: none;
+  &.small {
+    padding: 6px 8px;
+    font-size: 1rem;
+  }
+  &:hover {
+    transform: scale(1.03);
+  }
+  &:active:hover {
+    transform: scale(0.98);
+  }
+  &.warning {
+    background: $warning-color;
+    color: white;
+    border: none;
+  }
+  &:disabled {
+    background: #aaa;
+    cursor: default;
+    transform: none;
+  }
+}
+
+input[type=radio] {
+  margin: 8px;
+  width: 24px;
+  height: 24px;
+  transform: translateY(5px);
+}
+label.disabled {
+  color: grey;
+  text-decoration: line-through;
+}
+label.rare {
+  color: #600;
 }
 
 input[type=text], input[type=password], input[type=email], input[type=number], input[type=tel] {
@@ -34,7 +96,7 @@ input[type=text], input[type=password], input[type=email], input[type=number], i
   margin: 16px auto;
   padding: 8px 16px;
   font-size: 1rem;
-  border: 1px solid #aaa;
+  border: 2px solid #aaa;
   border-radius: 50px;
   outline: none;
   background: white;
@@ -64,9 +126,56 @@ hr {
   margin: 16px 0;
 }
 
-.markedarea {
-  width: 100%;
+.main-wrapper {
   max-width: 700px;
-  margin: 0 auto;
+  margin: 16px auto;
   padding: 16px;
+  background-color: #f3f3f3;
+  border-radius: 16px;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.7);
+  @media (max-width: 732px) {
+    margin: 16px;
+  }
+  h1:first-child, h2:first-child, h3:first-child {
+    margin-top: 0;
+  }
+}
+
+.main-header {
+  min-height: 200px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);
+  color: white;
+  h1 {
+    color: white;
+    font-weight: bold;
+    font-size: 2.5rem;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+    &:hover {
+      transform: scale(1.01);
+    }
+  }
+  @media (max-width: 600px) {
+    min-height: 140px;
+    h1 {
+      font-size: 2rem;
+    }
+  }
+}
+
+.plaintext {
+  color: white;
+  text-align: center;;
+}
+
+.center {
+  text-align: center;
+}
+
+.centered {
+  margin: 0 auto;
 }

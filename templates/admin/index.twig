@@ -1,0 +1,26 @@
+{% extends "base.twig" %}
+
+{% block title %}Admin{% endblock %}
+
+{% block content %}
+  
+  <div class="main-wrapper">
+    <h1>Workshops</h1>
+    <ul class="workshop-list">
+      {% for ws in workshops %}
+        <li>
+          Slot {{ws.slot}}: <strong>{{ws.title}}</strong> - {{ws.maxPeople}} Plätze.
+          <a href="/admin/addworkshop?id={{ws.id}}">Details</a>
+        </li>
+      {% endfor %}
+    </ul>
+    <a href="/admin/addworkshop">Workshop eintragen</a>
+  </div>
+
+  <div class="main-wrapper">
+    Momentan ist die Workshopanmeldung {% if workshopsopen %}geöffnet{% else %}geschlossen{% endif %}.
+    <br><br>
+    <a href="/admin/toggleworkshopsopen">Anmeldung jetzt {% if workshopsopen %}schließen{% else %}öffnen{% endif %}</a>
+  </div>
+
+{% endblock %}

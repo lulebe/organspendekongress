@@ -2,10 +2,13 @@ const session = require('express-session')
 const app = require('express')()
 
 const config = require('./config')
+const settings = require('./settings')
 const sessionStore = require('./db').sessionStore
 
 var path = require('path')
 global.appRoot = path.resolve(__dirname)
+
+settings.init()
 
 app.use(
   session({
@@ -17,8 +20,6 @@ app.use(
     cookie: { secure: 'auto' }
   })
 )
-
-app.use(require('body-parser').urlencoded({extended: true}))
 
 app.use('/', require('./routes'))
 app.use('/assets', require('express').static('./assets'))

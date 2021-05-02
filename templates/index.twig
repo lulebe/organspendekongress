@@ -3,12 +3,30 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-  
-  <div class="markedarea">
-    {{ markdownconvert | raw }}
-  </div>
 
-  <section style="text-align: center">
+  {% if workshopsopen %}
+  <section class="main-wrapper">
+    <h2>Workshop-Anmeldung</h2>
+    <p>
+      Die Workshop-Anmeldung ist geöffnet! Es gibt über 20 Workshops in 2 slots, Ihr könnt also alle etwas passendes finden.
+      Aufgrund begrenzter Teilnehmerzahlen solltet Ihr aber entweder schnell oder wenigstens nicht wählerisch sein!
+    </p>
+    <p class="center">
+      <br>
+      <a href="/registerworkshops"><button>Zur Anmeldung</button></a>
+    </p>
+  </section>
+  {% endif %}
+
+  <section class="main-wrapper">
+    {{ markdownconvert | raw }}
+  </section>
+
+  <section class="plaintext">
+    <a href="/login">Admin-Panel</a><br><br>
+  </section>
+
+  <section class="plaintext">
     &copy; Leander Berg, 2021. Licensed under <a href="/assets/LICENSE.txt" target="_blank">MIT License</a>.
   </section>
 {% endblock %}

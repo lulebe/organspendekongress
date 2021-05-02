@@ -71,4 +71,4 @@ const sessionStore = new SequelizeStore({
 async function init () {
   return await sequelize.sync({force: true})
 }
-module.exports = { User, init, sessionStore }
+module.exports = { User, Workshop, init, sessionStore }

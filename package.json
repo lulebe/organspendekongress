@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node .",
     "build": "brunch build --production",
-    "watch-css": "brunch watch"
+    "watch-css": "brunch watch",
+    "watch-server": "nodemon -e js,twig"
   },
   "author": "",
   "license": "MIT",
@@ -22,10 +23,12 @@
     "node-mailjet": "^3.3.1",
     "sanitize-html": "^2.3.3",
     "sequelize": "^6.6.2",
-    "twing": "^5.0.2"
+    "twing": "^5.0.2",
+    "xlsx": "^0.16.9"
   },
   "devDependencies": {
     "brunch": "^4.0.0",
+    "nodemon": "^2.0.7",
     "sass-brunch": "^3.0.0"
   }
 }
