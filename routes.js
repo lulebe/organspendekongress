@@ -28,3 +28,5 @@ router.get('/admin/toggleworkshopsopen', [adminHandler], require('./routes/admin
 router.get('/admin/deleteworkshop', [adminHandler], require('./routes/admin/deleteworkshop'))
 router.get('/admin/addworkshop', [adminHandler], require('./routes/admin/addworkshop'))
 router.post('/admin/addworkshop', [adminHandler, bodyParser], require('./routes/admin/addworkshop_post'))
+router.get('/admin/editmd', [adminHandler], require('./routes/admin/editmd'))
+router.post('/admin/editmd', [adminHandler, bodyParser], require('./routes/admin/editmd_post'))

@@ -1,22 +1,19 @@
 const tmpl = require.main.require('./templates')
+const { Workshop, User } = require.main.require('./db')
+
 
 module.exports = async (req, res) => {
-  const workshops = [{
-    slot: 1,
-    workshops: [
-      {id: 1, title: "Test 1", free: 4},
-      {id: 3, title: "Test 2", free: 1},
-      {id: 4, title: "Test 3", free: 0}
-    ]
-  },
-  {
-    slot: 2,
-    workshops: [
-      {id: 7, title: "Test 4", free: 0},
-      {id: 9, title: "Test 5", free: 0},
-      {id: 13, title: "Test 6", free: 0}
-    ]
-  }]
+  const workshops = (await Workshop.findAll({group: 'slot'})).map(s => ({slot: s.dataValues.slot}))
+  const rawWorkshops = await Promise.all(workshops.map(s => Workshop.findAll({
+    where: {slot: s.slot},
+    include: [{model: User, attributes: ['id']}]
+  })))
+  workshops.forEach((slot, i) => {
+    slot.workshops = rawWorkshops[i].map(w => w.dataValues)
+    slot.workshops.forEach(ws => {
+      ws.free = ws.maxPeople - ws.Users.length
+    })
+  })
   const opts = {
     workshops,
     error: !!req.query.error

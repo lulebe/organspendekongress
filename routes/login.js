@@ -1,6 +1,8 @@
 const tmpl = require.main.require('./templates')
 
 module.exports = async (req, res) => {
+  if (req.session.loggedin)
+    return res.redirect('/admin')
   const opts = {
     
   }
