@@ -53,6 +53,25 @@ const Workshop = sequelize.define('Workshop', {
   }
 })
 
+const Push = sequelize.define('Push', {
+  endpoint: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  expirationTime: {
+    type: DataTypes.DOUBLE,
+    allowNull: true
+  },
+  p256dh: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  auth: {
+    type: DataTypes.STRING,
+    allowNull: false
+  }
+})
+
 Workshop.belongsToMany(User, {
   through: 'UserWorkshops',
   onDelete: 'CASCADE',
@@ -71,4 +90,4 @@ const sessionStore = new SequelizeStore({
 async function init () {
   return await sequelize.sync({force: true})
 }
-module.exports = { User, Workshop, init, sessionStore }
+module.exports = { User, Workshop, Push, init, sessionStore }

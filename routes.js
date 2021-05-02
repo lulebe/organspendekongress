@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const bodyParser = require('body-parser').urlencoded({extended: true})
+const jsonParser = require('body-parser').json()
 
 async function adminHandler (req, res, next) {
   if (!req.session.loggedin) {
@@ -30,3 +31,8 @@ router.get('/admin/addworkshop', [adminHandler], require('./routes/admin/addwork
 router.post('/admin/addworkshop', [adminHandler, bodyParser], require('./routes/admin/addworkshop_post'))
 router.get('/admin/editmd', [adminHandler], require('./routes/admin/editmd'))
 router.post('/admin/editmd', [adminHandler, bodyParser], require('./routes/admin/editmd_post'))
+
+router.post('/api/pushsignup', [bodyParser, jsonParser], require('./api/pushsignup'))
+
+router.post('/api/admin/editmd', [adminHandler, bodyParser, jsonParser], require('./routes/api/admin/editmd_post'))
+router.post('/api/admin/upload', [adminHandler, multer], require('./api/admin/upload_post'))
