@@ -26,5 +26,5 @@ module.exports = async (req, res) => {
   })
   const workshops = await Workshop.findAll({where: {id: {[Op.or]: slotPicks.map(pick => pick.workshop)}}})
   await (await userP).addWorkshops(workshops)
-  tmpl.render('registerworkshops_post.twig', {}).then(rendered => res.end(rendered))
+  tmpl.render('registerworkshops_post.twig', {workshops: workshops.map(ws => ws.dataValues.title)}).then(rendered => res.end(rendered))
 }

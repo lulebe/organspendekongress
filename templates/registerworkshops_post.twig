@@ -8,6 +8,14 @@
 
     <h1>Workshop Anmeldung</h1>
 
+    <p>Du hast dich für folgende Workshops eingetragen:</p>
+
+    <ul>
+    {% for ws in workshops %}
+      <li>{{ws}}</li>
+    {% endfor %}
+    </ul>
+    
     <p>Vielen Dank für deine Anmeldung!</p>
     
   </div>
