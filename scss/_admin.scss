@@ -12,3 +12,7 @@ ul.workshop-list {
     margin: 0 auto;
   }
 }
+.editormd-html-preview .emoji, .editormd-preview-container .emoji {
+  width: 16px !important;
+  height: 16px !important;
+}
