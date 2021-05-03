@@ -8,7 +8,8 @@ const settings = require.main.require('./settings')
 const md = markdown()
 md.use(require("markdown-it-anchor"))
 md.use(require("markdown-it-table-of-contents"), {
-  markerPattern: /^\[TOC\]/im
+  markerPattern: /^\[TOC\]/im,
+  includeLevel: [1,2,3,4]
 })
 md.use(require('markdown-it-emoji'))
 md.use(require('markdown-it-link-attributes'), {attrs: {target: '_blank'}})
