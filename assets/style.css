@@ -151,14 +151,14 @@ hr {
 }
 
 .markdownbox {
-  max-width: 700px;
+  max-width: 900px;
   margin: 16px auto;
   padding: 16px;
   background-color: #f3f3f3;
   border-radius: 16px;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.7);
 }
-@media (max-width: 732px) {
+@media (max-width: 932px) {
   .markdownbox {
     margin: 16px;
   }
