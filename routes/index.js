@@ -11,6 +11,7 @@ md.use(require("markdown-it-table-of-contents"), {
   markerPattern: /^\[TOC\]/im
 })
 md.use(require('markdown-it-emoji'))
+md.use(require('markdown-it-link-attributes'), {attrs: {target: '_blank'}})
 
 md.renderer.rules.emoji = function(token, idx) {
   console.log(token)
