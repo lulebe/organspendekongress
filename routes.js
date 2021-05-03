@@ -35,5 +35,4 @@ router.post('/admin/editmd', [adminHandler, bodyParser], require('./routes/admin
 
 router.post('/api/pushsignup', [bodyParser, jsonParser], require('./routes/api/pushsignup'))
 
-router.post('/api/admin/editmd', [adminHandler, bodyParser, jsonParser], require('./routes/api/admin/editmd_post'))
 router.post('/api/admin/upload', [adminHandler, require('./routes/api/admin/upload_post').mw], require('./routes/api/admin/upload_post').route)
