@@ -26,7 +26,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/editor-md/1.5.0/editormd.min.js"></script>
 <script src="/assets/libs/editormd.en.js"></script>
 <script>
-  window.onbeforeunload = function() {return true}
   $(function() {
     editormd.emoji = {
       path: "/assets/emojis/",
@@ -46,8 +45,12 @@
       },
       toolbarHandlers: {
         save: function(cm, icon, cursor, selection) {
+          window.onbeforeunload = null
           document.getElementById('mdform').submit()
         }
+      },
+      onchange: function () {
+        window.onbeforeunload = function() {return true}
       }
     })
   })
