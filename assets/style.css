@@ -50,7 +50,7 @@ fieldset {
   border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
-button, .btn {
+button:not(.editormd-btn), .btn {
   border-radius: 100px;
   padding: 12px 16px;
   font-size: 1.2rem;
@@ -62,28 +62,28 @@ button, .btn {
   color: white;
   border: none;
 }
-button.small, .btn.small {
+button:not(.editormd-btn).small, .btn.small {
   padding: 6px 8px;
   font-size: 1rem;
 }
-button:hover, .btn:hover {
+button:not(.editormd-btn):hover, .btn:hover {
   transform: scale(1.03);
 }
-button:active:hover, .btn:active:hover {
+button:not(.editormd-btn):active:hover, .btn:active:hover {
   transform: scale(0.98);
 }
-button.warning, .btn.warning {
+button:not(.editormd-btn).warning, .btn.warning {
   background: #ff6688;
   color: white;
   border: none;
 }
-button:disabled, .btn:disabled {
+button:not(.editormd-btn):disabled, .btn:disabled {
   background: #aaa;
   cursor: default;
   transform: none;
 }
 
-input[type=radio] {
+input[type=radio].ako-inp {
   margin: 8px;
   width: 24px;
   height: 24px;
@@ -99,7 +99,7 @@ label.rare {
   color: #600;
 }
 
-input[type=text], input[type=password], input[type=email], input[type=number], input[type=tel] {
+input[type=text].ako-inp, input[type=password].ako-inp, input[type=email].ako-inp, input[type=number].ako-inp, input[type=tel].ako-inp {
   display: block;
   width: 100%;
   margin: 16px auto;
@@ -110,7 +110,7 @@ input[type=text], input[type=password], input[type=email], input[type=number], i
   outline: none;
   background: white;
 }
-input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=number]:focus, input[type=tel]:focus {
+input[type=text].ako-inp:focus, input[type=password].ako-inp:focus, input[type=email].ako-inp:focus, input[type=number].ako-inp:focus, input[type=tel].ako-inp:focus {
   border-color: #0bb8a6;
 }
 
@@ -152,6 +152,35 @@ hr {
   margin-top: 0;
 }
 
+.markdownbox {
+  max-width: 700px;
+  margin: 16px auto;
+  padding: 16px;
+  background-color: #f3f3f3;
+  border-radius: 16px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.7);
+}
+@media (max-width: 732px) {
+  .markdownbox {
+    margin: 16px;
+  }
+}
+.markdownbox h1:first-child, .markdownbox h2:first-child, .markdownbox h3:first-child {
+  margin-top: 0;
+}
+.markdownbox img:not(.emoji) {
+  max-width: 100%;
+  max-height: 200px;
+  display: block;
+  margin: 0 auto;
+}
+.markdownbox .emoji {
+  width: 13px;
+  margin: 0;
+  padding: 0;
+  transform: scale(1.3);
+}
+
 .main-header {
   min-height: 200px;
   padding: 24px;
@@ -191,5 +220,17 @@ hr {
 
 .centered {
   margin: 0 auto;
+}
+
+table th {
+  padding: 6px 8px;
+  background: #ddd;
+}
+table td {
+  border-top: 1px solid grey;
+  padding: 6px 8px;
+}
+table td:not(:last-child) {
+  border-right: 1px solid grey;
 }
 

@@ -9,7 +9,7 @@
     <h1>Workshop {% if workshop %}bearbeiten{% else %}eintragen{% endif %}</h1>
     <form method="post">
       <label for="inp-title">Titel:</label>
-      <input type="text" name="title" id="inp-title" {% if workshop %}value="{{workshop.title}}"{% endif %} placeholder="Wie DU gegen Spende nur einer Niere 10000€ verdienst!">
+      <input type="text" name="title" id="inp-title" class="ako-inp" {% if workshop %}value="{{workshop.title}}"{% endif %} placeholder="Wie DU gegen Spende nur einer Niere 10000€ verdienst!">
       <label for="inp-slot">Slot:</label>
       <select name="slot" id="inp-slot" {% if workshop %}value="{{workshop.slot}}"{% endif %}>
         <option value="1">1</option>
@@ -17,7 +17,7 @@
       </select>
       <br><br>
       <label for="inp-people">maximale Teilnemer:</label>
-      <input type="number" name="people" id="inp-people" value="{% if workshop %}{{workshop.maxPeople}}{% else %}10{% endif %}" min="5" max="50">
+      <input type="number" name="people" id="inp-people" class="ako-inp" value="{% if workshop %}{{workshop.maxPeople}}{% else %}10{% endif %}" min="5" max="50">
       <button type="submit">speichern</button>
     </form>
     <br><br>

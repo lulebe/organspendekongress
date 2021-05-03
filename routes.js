@@ -25,6 +25,7 @@ router.get('/login', require('./routes/login'))
 router.post('/login', [bodyParser], require('./routes/login_post'))
 
 router.get('/admin', [adminHandler], require('./routes/admin/index'))
+router.get('/admin/workshopexport', [adminHandler], require('./routes/admin/workshopexport'))
 router.get('/admin/toggleworkshopsopen', [adminHandler], require('./routes/admin/toggleworkshopsopen'))
 router.get('/admin/deleteworkshop', [adminHandler], require('./routes/admin/deleteworkshop'))
 router.get('/admin/addworkshop', [adminHandler], require('./routes/admin/addworkshop'))
@@ -35,4 +36,4 @@ router.post('/admin/editmd', [adminHandler, bodyParser], require('./routes/admin
 router.post('/api/pushsignup', [bodyParser, jsonParser], require('./routes/api/pushsignup'))
 
 router.post('/api/admin/editmd', [adminHandler, bodyParser, jsonParser], require('./routes/api/admin/editmd_post'))
-router.post('/api/admin/upload', [adminHandler].concat(require('./routes/api/admin/upload_post').mw), require('./routes/api/admin/upload_post').route)
+router.post('/api/admin/upload', [adminHandler, require('./routes/api/admin/upload_post').mw], require('./routes/api/admin/upload_post').route)

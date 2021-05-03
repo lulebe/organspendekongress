@@ -1,15 +1,26 @@
-const marked = require('marked')
-const sanitize = require('sanitize-html')
 const fs = require('fs').promises
 const path = require('path')
+const markdown = require('markdown-it')
 
 const tmpl = require.main.require('./templates')
 const settings = require.main.require('./settings')
 
+const md = markdown()
+md.use(require("markdown-it-anchor"))
+md.use(require("markdown-it-table-of-contents"), {
+  markerPattern: /^\[TOC\]/im
+})
+md.use(require('markdown-it-emoji'))
+
+md.renderer.rules.emoji = function(token, idx) {
+  console.log(token)
+  return '<img class="emoji" src="/assets/emojis/'+token[idx].markup+'.png">';
+};
+
 module.exports = async (req, res) => {
-  const md = await fs.readFile(path.join(global.appRoot, 'homepagetext.md'), 'utf-8')
+  const mdraw = await fs.readFile(path.join(global.appRoot, 'homepagetext.md'), 'utf-8')
   const opts = {
-    markdownconvert: sanitize(marked(md)),
+    markdownconvert: md.render(mdraw),
     workshopsopen: settings.get('workshopsopen')
   }
   tmpl.render('index.twig', opts).then(rendered => res.end(rendered))

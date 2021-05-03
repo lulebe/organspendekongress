@@ -24,6 +24,7 @@ app.use(
 app.use('/', require('./routes'))
 app.use('/assets', require('express').static('./assets'))
 app.use('/uploads', require('express').static('./uploads'))
+app.use('/fonts', require('express').static('./fonts'))
 
 
 app.listen(config.PORT, () => {

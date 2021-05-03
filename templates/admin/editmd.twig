@@ -1,18 +1,51 @@
 {% extends "base.twig" %}
 
 {% block title %}Admin{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="/assets/editormd.min.css">
+{% endblock %}
 
 {% block content %}
   
-  <div class="mdedit">
-    <a href="/admin">&larr; Admin-Startseite</a><br><br>
-    <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">Markdown Anleitung</a><br><br>
-    <form method="POST">
-      <textarea style="height: 600px" name="md">{{markdown}}</textarea>
-      <br>
-      <button type="submit">speichern</button>
-    </form>
+  <div class="main-wrapper">
+    <a href="/admin">&larr; Admin-Startseite</a>
   </div>
+  <form method="post">
+    <div class="editor-wrapper">
+      <div id="editormd">
+        <textarea style="display:none;">{{markdown}}</textarea>
+      </div>
+    </div>
+
+    <div class="center">
+      <button type="submit">speichern</button>
+      <br><br>
+    </div>
+  </form>
   
 
+{% endblock %}
+
+{% block js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/editor-md/1.5.0/editormd.min.js"></script>
+<script src="/assets/libs/editormd.en.js"></script>
+<script>
+  $(function() {
+    editormd.emoji = {
+      path: "/assets/emojis/",
+      ext: ".png"
+    }
+    var editor = editormd("editormd", {
+      path : "/assets/libs/",
+      name: "md",
+      autoHeight: true,
+      imageUpload : true,
+      imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+      imageUploadURL : "/api/admin/upload",
+      emoji: true,
+      toolbarIcons: ["undo", "redo", "|", "bold", "del", "italic", "quote", "|", "h1", "h2", "h3", "h4", "|", "list-ul", "list-ol", "hr", "|", "link", "image", "code", "table", "emoji", "html-entities", "|", "watch", "fullscreen", "search", "|", "help"]
+    })
+  })
+</script>
 {% endblock %}
