@@ -10,16 +10,11 @@
   <div class="main-wrapper">
     <a href="/admin">&larr; Admin-Startseite</a>
   </div>
-  <form method="post">
+  <form method="post" id="mdform">
     <div class="editor-wrapper">
       <div id="editormd">
         <textarea style="display:none;">{{markdown}}</textarea>
       </div>
-    </div>
-
-    <div class="center">
-      <button type="submit">speichern</button>
-      <br><br>
     </div>
   </form>
   
@@ -44,7 +39,15 @@
       imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
       imageUploadURL : "/api/admin/upload",
       emoji: true,
-      toolbarIcons: ["undo", "redo", "|", "bold", "del", "italic", "quote", "|", "h1", "h2", "h3", "h4", "|", "list-ul", "list-ol", "hr", "|", "link", "image", "code", "table", "emoji", "html-entities", "|", "watch", "fullscreen", "search", "|", "help"]
+      toolbarIcons: ["save", "|", "undo", "redo", "|", "bold", "del", "italic", "quote", "|", "h1", "h2", "h3", "h4", "|", "list-ul", "list-ol", "hr", "|", "link", "image", "code", "table", "emoji", "html-entities", "|", "watch", "fullscreen", "search", "|", "help"],
+      toolbarIconsClass: {
+        save: "fa-save"
+      },
+      toolbarHandlers: {
+        save: function(cm, icon, cursor, selection) {
+          document.getElementById('mdform').submit()
+        }
+      }
     })
   })
 </script>
