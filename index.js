@@ -1,3 +1,5 @@
+const fs = require('fs')
+
 const session = require('express-session')
 const app = require('express')()
 
@@ -9,6 +11,11 @@ var path = require('path')
 global.appRoot = path.resolve(__dirname)
 
 settings.init()
+
+if (!fs.existsSync('./homepagetext.md'))
+  fs.closeSync(fs.openSync('./homepagetext.md', 'w'))
+if (!fs.existsSync('./uploads'))
+  fs.mkdirSync('./uploads')
 
 app.use(
   session({
