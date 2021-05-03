@@ -146,12 +146,16 @@ hr {
 .markdownbox {
   max-width: 900px;
   margin: 16px auto;
-  padding: 16px;
+  padding: 32px;
   background-color: #f3f3f3;
-  border-radius: 16px;
+  border-radius: 32px;
   box-shadow: 0 2px 15px rgba(0,0,0,0.7);
   @media (max-width: 932px) {
     margin: 16px;
+  }
+  @media (max-width: 650px) {
+    padding: 16px;
+    border-radius: 16px;
   }
   h1:first-child, h2:first-child, h3:first-child {
     margin-top: 0;
