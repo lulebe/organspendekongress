@@ -14,7 +14,7 @@
       <input type="text" name="host" id="inp-title" class="ako-inp" {% if workshop %}value="{{workshop.host}}"{% endif %} placeholder="Karl Lagerfeld">
       <label for="inp-title">Beschreibung:</label>
       <textarea name="description" rows="10" placeholder="Dat is ne janz ne dolle Sache, sach ich dir!">{% if workshop %}{{workshop.description}}{% endif %}</textarea>
-      <br><br>
+      <br>
       <label for="inp-slot">Slot:</label>
       <select name="slot" id="inp-slot" {% if workshop %}value="{{workshop.slot}}"{% endif %}>
         <option value="1">1</option>
