@@ -18,6 +18,12 @@
   </section>
   {% endif %}
 
+  <section class="main-wrapper" style="display: none;" id="pushregister">
+    <h3>Benachrichtigungen</h3>
+    <p>Aktiviere Benachrichtigungen auf dieser Seite, damit du es direkt erfährst, wenn es hier neues gibt.</p>
+    <button onclick="activateNotifications()">Benachrichtigungen aktivieren</button>
+  </section>
+
   <section class="markdownbox">
     {{ markdownconvert | raw }}
   </section>
@@ -30,4 +36,26 @@
     &copy; Leander Berg, 2021. Licensed under <a href="/assets/LICENSE.txt" target="_blank">MIT License</a>.
     <br><br>
   </section>
+{% endblock %}
+
+{% block js %}
+
+<script>
+(async function () {
+  if (('serviceWorker' in navigator) && ('PushManager' in window)) {
+    if (Notification.permission != 'granted')
+      document.getElementById('pushregister').style.display = 'block'
+    else
+      await navigator.serviceWorker.register('sw.js')
+  }
+})//TODO ()
+
+async function activateNotifications () {
+  const permission = await window.Notification.requestPermission()
+  if (permission != 'granted') return
+  const swreg = await navigator.serviceWorker.register('sw.js')
+  document.getElementById('pushregister').style.display = 'none'
+}
+</script>
+
 {% endblock %}

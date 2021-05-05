@@ -1,4 +1,4 @@
-ul.workshop-list li {
+ul.workshop-list-admin li {
   padding: 8px 0;
 }
 
@@ -251,5 +251,17 @@ table td {
 }
 table td:not(:last-child) {
   border-right: 1px solid grey;
+}
+
+.workshop-list h3 {
+  font-size: 1rem;
+  margin: 0;
+}
+.workshop-list .host {
+  font-style: italic;
+  margin-bottom: 4px;
+}
+.workshop-list .description {
+  font-size: 0.9rem;
 }
 

@@ -11,6 +11,23 @@
   {% endif %}
 
   <div class="main-wrapper">
+    <h1>Die Workshops</h1>
+    {% for slot in workshops %}
+      <strong>Slot {{slot.slot}}</strong><br><br>
+      <ul class="workshop-list">
+      {% for ws in slot.workshops %}
+        <li>
+          <h3>{{ws.title}}</h3>
+          {% if ws.host %}<div class="host">von {{ws.host}}</div>{% endif %}
+          <div class="description">{{ws.description}}</div>
+        </li>
+      {% endfor %}
+      </ul>
+      <br><br>
+    {% endfor %}
+  </div>
+
+  <div class="main-wrapper">
 
     <h1>Workshop Anmeldung</h1>
 

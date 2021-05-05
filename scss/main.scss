@@ -236,3 +236,17 @@ table {
     }
   }
 }
+
+.workshop-list {
+  h3 {
+    font-size: 1rem;
+    margin: 0;
+  }
+  .host {
+    font-style: italic;
+    margin-bottom: 4px;
+  }
+  .description {
+    font-size: 0.9rem;
+  }
+}

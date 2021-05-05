@@ -43,6 +43,14 @@ const Workshop = sequelize.define('Workshop', {
     type: DataTypes.STRING,
     allowNull: false
   },
+  description: {
+    type: DataTypes.TEXT,
+    allowNull: false
+  },
+  host: {
+    type: DataTypes.STRING,
+    allowNull: true
+  },
   slot: {
     type: DataTypes.INTEGER,
     allowNull: false
@@ -64,11 +72,11 @@ const Push = sequelize.define('Push', {
   },
   p256dh: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: true
   },
   auth: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: true
   }
 })
 

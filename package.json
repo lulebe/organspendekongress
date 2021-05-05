@@ -27,6 +27,7 @@
     "node-mailjet": "^3.3.1",
     "sequelize": "^6.6.2",
     "twing": "^5.0.2",
+    "web-push": "^3.4.4",
     "xlsx": "^0.16.9"
   },
   "devDependencies": {
