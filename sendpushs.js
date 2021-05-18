@@ -3,12 +3,12 @@ const webpush = require('web-push')
 const { Push } = require.main.require('./db')
 const config = require.main.require('./config')
 
-webpush.setVapidDetails('mailto:berg@uni-heidelberg.de', config.vapid, config.vapidPrivate)
+console.log('mailto:leander.berg@uni-heidelberg.de', config.vapid, config.vapidPrivate)
+webpush.setVapidDetails('mailto:leander.berg@uni-heidelberg.de', config.vapid, config.vapidPrivate)
 
-module.exports = function (message) { //message currently not used
+module.exports = function (message) {
   Push.findAll()
   .then(pushs => {
-    console.log(JSON.stringify(pushs))
     pushs.forEach(subscription => {
       const receiver = {
         endpoint: subscription.endpoint
@@ -18,7 +18,7 @@ module.exports = function (message) { //message currently not used
           auth: subscription.auth,
           p256dh: subscription.p256dh
         }
-      webpush.sendNotification(receiver)
+      webpush.sendNotification(receiver, message, {TTL: 3600*8})
       .then(res => {
         console.log(res)
       })

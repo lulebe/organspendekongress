@@ -7,6 +7,6 @@ module.exports = {
   MJ_APIKEY_PUBLIC: process.env.MJ_PUB || "",
   MJ_APIKEY_PRIVATE: process.env.MJ_PRIV || "",
   production: process.env.NODE_ENV === "production",
-  vapid: process.env.VAPID || 'BDDG1SbhV0RKqN86R2v7B7FKAYeMdCtDQYM71jLvB_Ttr60rPCzOCPHbrKdakmS67CTCBw9MjzgKsD2zF-lRcPM',
-  vapidPrivate: process.env.VAPID_PRIVATE || '7vG_BDqsnuLAtDB1jvBBrz1eGqZqwTEyaKeYwLMWkiY'
+  vapid: process.env.VAPID || 'BNfIWxhNH0WQ2Hn2yWDqvXVFAXfX3cKZPLaySZFlyTBLW5R5hM7zxw-alYSahd5odH3uIDe-8sXBfjCdpuKUFOE',
+  vapidPrivate: process.env.VAPID_PRIVATE || 'wi4zgDGNV4LgL02TbASgTnBYD33EFATZK-rQs9_b3eQ'
 }

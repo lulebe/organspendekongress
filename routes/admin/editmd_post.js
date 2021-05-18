@@ -8,6 +8,5 @@ module.exports = async (req, res) => {
     await fs.writeFile(path.join(global.appRoot, 'homepagetext.md'), req.body.md)
   }
   res.redirect('/admin/editmd')
-  console.log('push')
   push('Auf der Website sind neue Infos verfügbar.')
 }

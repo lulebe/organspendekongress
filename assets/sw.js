@@ -21,30 +21,33 @@ self.addEventListener('notificationclick', function(event) {
   )
 }, false)
 
+
 self.addEventListener('activate', async () => {
   console.log('activate')
   const vapid = (await (await fetch('/api/pushask')).json()).vapid
-  console.log(vapid)
   if (!vapid) return
   try {
     const options = {
       userVisibleOnly: true,
-      applicationServerKey: urlB64ToUint8Array(vapid)
+      applicationServerKey: urlBase64ToUint8Array(vapid)
     }
     const subscription = await self.registration.pushManager.subscribe(options)
-    console.log(subscription)
     const response = saveSubscription(subscription)
-    console.log(response)
+    console.log(await response)
   } catch (err) {
     console.log('Error', err)
   }
 })
 
-function urlB64ToUint8Array (base64String) {
-  const padding = '='.repeat((4 - (base64String.length % 4)) % 4)
-  const base64 = (base64String + padding).replace(/\-/g, '+').replace(/_/g, '/')
+function urlBase64ToUint8Array(base64String) {
+  const padding = '='.repeat((4 - base64String.length % 4) % 4)
+  const base64 = (base64String + padding)
+    .replace(/-/g, '+')
+    .replace(/_/g, '/')
+ 
   const rawData = atob(base64)
   const outputArray = new Uint8Array(rawData.length)
+ 
   for (let i = 0; i < rawData.length; ++i) {
     outputArray[i] = rawData.charCodeAt(i)
   }
@@ -52,6 +55,8 @@ function urlB64ToUint8Array (base64String) {
 }
 
 async function saveSubscription (subscription) {
+  const sub = JSON.parse(JSON.stringify(subscription))
+  console.log(sub)
   const SERVER_URL = '/api/pushsignup'
   const response = await fetch(SERVER_URL, {
     method: 'post',
@@ -59,10 +64,10 @@ async function saveSubscription (subscription) {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      endpoint: subscription.endpoint,
-      auth: subscription.keys ? subscription.keys.auth : null,
-      p256dh: subscription.keys ? subscription.keys.p256dh : null,
-      expirationTime: subscription.expirationTime
+      endpoint: sub.endpoint,
+      auth: sub.keys ? sub.keys.auth : null,
+      p256dh: sub.keys ? sub.keys.p256dh : null,
+      expirationTime: sub.expirationTime
     }),
   })
   return response
