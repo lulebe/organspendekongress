@@ -15,7 +15,6 @@ md.use(require('markdown-it-emoji'))
 md.use(require('markdown-it-link-attributes'), {attrs: {target: '_blank'}})
 
 md.renderer.rules.emoji = function(token, idx) {
-  console.log(token)
   return '<img class="emoji" src="/assets/emojis/'+token[idx].markup+'.png">';
 };
 
