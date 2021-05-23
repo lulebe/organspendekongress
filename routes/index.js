@@ -20,9 +20,9 @@ md.renderer.rules.emoji = function(token, idx) {
 
 module.exports = async (req, res) => {
   let infoData = await fs.readFile(path.join(global.appRoot, 'homepagetext.md'), 'utf-8')
-  infoData = infoData.replaceAll(/\/\*[\s\S]*?\*\//g, "")
+  infoData = infoData.replace(/\/\*[\s\S]*?\*\//g, "")
   infoData = md.render(infoData)
-  infoData = infoData.replaceAll("<table", '<table cellspacing="0"')
+  infoData = infoData.replace(/<table/g, '<table cellspacing="0"')
   const opts = {
     markdownconvert: infoData,
     workshopsopen: settings.get('workshopsopen')
