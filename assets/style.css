@@ -252,6 +252,9 @@ table td {
 table td:not(:last-child) {
   border-right: 1px solid grey;
 }
+table tr:nth-child(even) {
+  background-color: #eee;
+}
 
 .workshop-list h3 {
   font-size: 1rem;

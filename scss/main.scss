@@ -235,6 +235,9 @@ table {
       border-right: 1px solid grey;
     }
   }
+  tr:nth-child(even) {
+    background-color: #eee;
+  }
 }
 
 .workshop-list {

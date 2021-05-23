@@ -19,10 +19,12 @@ md.renderer.rules.emoji = function(token, idx) {
 };
 
 module.exports = async (req, res) => {
-  let mdraw = await fs.readFile(path.join(global.appRoot, 'homepagetext.md'), 'utf-8')
-  mdraw = mdraw.replace(/\/\*[\s\S]*?\*\//g, "")
+  let infoData = await fs.readFile(path.join(global.appRoot, 'homepagetext.md'), 'utf-8')
+  infoData = infoData.replace(/\/\*[\s\S]*?\*\//g, "")
+  infoData = md.render(infoData)
+  infoData = infoData.replace("<table", '<table cellspacing="0"')
   const opts = {
-    markdownconvert: md.render(mdraw),
+    markdownconvert: infoData,
     workshopsopen: settings.get('workshopsopen')
   }
   tmpl.render('index.twig', opts).then(rendered => res.end(rendered))
