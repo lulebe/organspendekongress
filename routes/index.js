@@ -19,7 +19,8 @@ md.renderer.rules.emoji = function(token, idx) {
 };
 
 module.exports = async (req, res) => {
-  const mdraw = await fs.readFile(path.join(global.appRoot, 'homepagetext.md'), 'utf-8')
+  let mdraw = await fs.readFile(path.join(global.appRoot, 'homepagetext.md'), 'utf-8')
+  mdraw = mdraw.replace(/\/\*[\s\S]*?\*\//g, "")
   const opts = {
     markdownconvert: md.render(mdraw),
     workshopsopen: settings.get('workshopsopen')

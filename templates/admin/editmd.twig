@@ -26,6 +26,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/editor-md/1.5.0/editormd.min.js"></script>
 <script src="/assets/libs/editormd.en.js"></script>
 <script>
+  if (!String.prototype.splice) {
+    String.prototype.splice = function(start, delCount, newSubStr) {
+        return this.slice(0, start) + newSubStr + this.slice(start + Math.abs(delCount))
+    }
+  }
+
   $(function() {
     editormd.emoji = {
       path: "/assets/emojis/",
@@ -41,7 +47,8 @@
       emoji: true,
       toolbarIcons: ["save", "|", "undo", "redo", "|", "bold", "del", "italic", "quote", "|", "h1", "h2", "h3", "h4", "|", "list-ul", "list-ol", "hr", "|", "link", "image", "code", "table", "emoji", "html-entities", "|", "watch", "fullscreen", "search", "|", "help"],
       toolbarIconsClass: {
-        save: "fa-save"
+        save: "fa-save",
+        hide: "fa-eye-slash"
       },
       toolbarHandlers: {
         save: function(cm, icon, cursor, selection) {
