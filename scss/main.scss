@@ -185,6 +185,24 @@ hr {
   }
   .tablewrapper {
     overflow-x: auto;
+    background:
+      /* Shadow covers */
+      linear-gradient(90deg, #f3f3f3 40%, rgba(255,255,255,0)),
+      linear-gradient(90deg, rgba(255,255,255,0), #f3f3f3 60%) 100% 0,
+      
+      /* Shadows */
+      radial-gradient(0 50%, farthest-side, rgba(0,0,0,.3), rgba(0,0,0,0)),
+      radial-gradient(100% 50%,farthest-side, rgba(0,0,0,.3), rgba(0,0,0,0)) 100% 0;
+    background:
+      linear-gradient(90deg, #f3f3f3 40%, rgba(255,255,255,0)),
+      linear-gradient(90deg, rgba(255,255,255,0), #f3f3f3 60%) 100% 0,
+      
+      radial-gradient(farthest-side at 0 50%, rgba(0,0,0,.3), rgba(0,0,0,0)),
+      radial-gradient(farthest-side at 100% 50%, rgba(0,0,0,.3), rgba(0,0,0,0)) 100% 0;
+    background-repeat: no-repeat;
+    background-size: 50px 100%, 50px 100%, 20px 100%, 20px 100%;
+    /* Opera doesn't support this in the shorthand */
+    background-attachment: local, local, scroll, scroll;
   }
 }
 
@@ -230,7 +248,7 @@ hr {
 table {
   th {
     padding: 6px 8px;
-    background: #ddd;
+    background: #ccc;
   }
   td {
     border-top: 1px solid grey;
@@ -240,7 +258,7 @@ table {
     }
   }
   tr:nth-child(even) {
-    background-color: #eee;
+    background-color: rgba(0,0,0,0.04);
   }
 }
 

@@ -23,7 +23,7 @@ module.exports = async (req, res) => {
   infoData = infoData.replace(/\/\*[\s\S]*?\*\//g, "")
   infoData = md.render(infoData)
   infoData = infoData.replace(/<table/g, '<div class="tablewrapper"><table cellspacing="0"')
-  infoData = infoData.replace(/<\/table>/g, '</div></table>')
+  infoData = infoData.replace(/<\/table>/g, '</table></div>')
   const opts = {
     markdownconvert: infoData,
     workshopsopen: settings.get('workshopsopen')
