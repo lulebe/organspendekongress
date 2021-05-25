@@ -175,6 +175,10 @@ hr {
     border-radius: 16px;
   }
 }
+.markdownbox .table-of-contents li {
+  margin: 4px 0;
+  font-size: 1.1rem;
+}
 .markdownbox h1:first-child, .markdownbox h2:first-child, .markdownbox h3:first-child {
   margin-top: 0;
 }
