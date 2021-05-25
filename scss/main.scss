@@ -1,5 +1,5 @@
 $primary-color: #089183;
-$primary-color-dark: #0a5c54;
+$primary-color-dark: hsl(174deg 80% 14%);
 $warning-color: #ff6688;
 
 @import "admin";
@@ -31,6 +31,7 @@ a {
   }
   &:not(.btn):hover {
     color: $primary-color-dark;
+    text-shadow: 0 0 4px #888;
   }
 }
 

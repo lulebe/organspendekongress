@@ -41,7 +41,8 @@ a:visited {
   color: #089183;
 }
 a:not(.btn):hover {
-  color: #0a5c54;
+  color: #07403b;
+  text-shadow: 0 0 4px #888;
 }
 
 .error {
