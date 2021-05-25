@@ -35,13 +35,13 @@ body {
 
 a {
   text-decoration: none;
-  color: #0bb8a6;
+  color: #089183;
 }
 a:visited {
-  color: #0bb8a6;
+  color: #089183;
 }
 a:not(.btn):hover {
-  color: #0b685f;
+  color: #0a5c54;
 }
 
 .error {
@@ -61,7 +61,7 @@ button:not(.editormd-btn), .btn {
   cursor: pointer;
   transition: transform 0.05s;
   outline: none;
-  background: #0bb8a6;
+  background: #089183;
   color: white;
   border: none;
 }
@@ -114,7 +114,7 @@ input[type=text].ako-inp, input[type=password].ako-inp, input[type=email].ako-in
   background: white;
 }
 input[type=text].ako-inp:focus, input[type=password].ako-inp:focus, input[type=email].ako-inp:focus, input[type=number].ako-inp:focus, input[type=tel].ako-inp:focus {
-  border-color: #0bb8a6;
+  border-color: #089183;
 }
 
 textarea {
@@ -128,7 +128,7 @@ textarea {
   border-radius: 4px;
 }
 textarea:focus {
-  border-color: #0bb8a6;
+  border-color: #089183;
 }
 
 hr {
