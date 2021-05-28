@@ -81,14 +81,10 @@ const Push = sequelize.define('Push', {
 })
 
 Workshop.belongsToMany(User, {
-  through: 'UserWorkshops',
-  onDelete: 'CASCADE',
-  onUpdate: 'CASCADE'
+  through: 'UserWorkshops'
 })
 User.belongsToMany(Workshop, {
-  through: 'UserWorkshops',
-  onDelete: 'CASCADE',
-  onUpdate: 'CASCADE'
+  through: 'UserWorkshops'
 })
 
 const sessionStore = new SequelizeStore({

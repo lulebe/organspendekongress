@@ -33,9 +33,10 @@
       <button class="warning small" type="submit">Workshop löschen</button>
     </form>
     <h3>Teilnehmer:</h3>
+    <small><em>Einen Nutzer zu löschen entfernt ihn aus allen Workshops.</em></small>
     <ul>
       {% for p in people %}
-        <li>{{p.fullName}}</li>
+        <li>{{p.fullName}} - <a href="/admin/deleteperson/{{workshop.id}}/{{p.id}}" style="color: #f66">Nutzer löschen</a></li>
       {% endfor %}
     </ul>
     {% endif %}
