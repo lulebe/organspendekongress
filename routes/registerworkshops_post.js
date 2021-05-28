@@ -22,7 +22,10 @@ module.exports = async (req, res) => {
   
   const userP = User.create({firstName: req.body.firstname, lastName: req.body.lastname, email: req.body.email})
   userP.catch(e => {
-    res.redirect('/registerworkshops?error=form')
+    if (e.name = 'SequelizeUniqueConstraintError')
+      res.redirect('/registerworkshops?error=unique')
+    else
+      res.redirect('/registerworkshops?error=form')
   })
   const workshops = await Workshop.findAll({where: {id: {[Op.or]: slotPicks.map(pick => pick.workshop)}}})
   await (await userP).addWorkshops(workshops)

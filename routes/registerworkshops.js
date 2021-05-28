@@ -16,7 +16,7 @@ module.exports = async (req, res) => {
   })
   const opts = {
     workshops,
-    error: !!req.query.error
+    error: req.query.error
   }
   tmpl.render('registerworkshops.twig', opts).then(rendered => res.end(rendered))
 }

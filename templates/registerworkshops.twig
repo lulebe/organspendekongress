@@ -4,9 +4,14 @@
 
 {% block content %}
   
-  {% if error %}
+  {% if error == "form" %}
   <div class="main-wrapper">
     <p class="error">Da scheint etwas schief gelaufen zu sein. Fülle bitte alle Textfelder korrekt aus ;)</p>
+  </div>
+  {% endif %}
+  {% if error == "unique" %}
+  <div class="main-wrapper">
+    <p class="error">Diese E-Mailadresse wurde bereits zur Anmeldung verwendet.</p>
   </div>
   {% endif %}
 
