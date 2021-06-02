@@ -8,6 +8,6 @@ module.exports = async (req, res) => {
     workshopsopen: settings.get('workshopsopen'),
     userCount: await User.count()
   }
-  opts.workshops.forEach(ws -> ws.free = ws.maxPeople - ws.Users.length)
+  opts.workshops.forEach(ws => ws.free = ws.maxPeople - ws.Users.length)
   tmpl.render('admin/index.twig', opts).then(rendered => res.end(rendered))
 }
