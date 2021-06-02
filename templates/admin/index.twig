@@ -10,7 +10,7 @@
     <ul class="workshop-list-admin">
       {% for ws in workshops %}
         <li>
-          Slot {{ws.slot}}: <strong>{{ws.title}}</strong> - {{ws.maxPeople}} Plätze.
+          Slot {{ws.slot}}: <strong>{{ws.title}}</strong> - {{ws.free}}/{{ws.maxPeople}} Plätze.
           <a href="/admin/addworkshop?id={{ws.id}}">Details</a>
         </li>
       {% endfor %}
