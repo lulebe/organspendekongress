@@ -1,0 +1,33 @@
+{% extends "base.twig" %}
+
+{% block title %}Admin: Teilnehmer{% endblock %}
+
+{% block content %}
+  
+  <div class="main-wrapper">
+    <a href="/admin/users">&larr; alle Teilnehmer</a>
+    <h1>{{user.fullName}}</h1>
+
+    <form action="/admin/users/{{user.id}}" method="POST">
+      <label for="inp-lastname">Nachname:</label>
+      <input type="text" class="ako-inp" name="lastname" id="inp-lastname" placeholder="Mustermann" value="{{user.lastName}}">
+      <label for="inp-lastname">Vorname:</label>
+      <input type="text" class="ako-inp" name="firstname" id="inp-firstname" placeholder="Erika" value="{{user.firstName}}">
+      <label for="inp-lastname">E-Mailadresse:</label>
+      <input type="email" class="ako-inp" name="email" id="inp-mail" placeholder="em@example.org" value="{{user.email}}">
+      <br>
+      {% for slot in workshops %}
+        <strong>Slot {{slot.slot}}</strong><br><br>
+        <input type="radio" class="ako-inp" name="slot{{slot.slot}}" id="wsr-{{slot.slot}}-0" value="-1" {% if not userWorkshopIds[slot.slot] %}checked{% endif %}>
+        <label for="wsr-{{slot.slot}}-0">kein Workshop</label><br>
+        {% for ws in slot.workshops %}
+        <input type="radio" class="ako-inp" name="slot{{slot.slot}}" id="wsr-{{slot.slot}}-{{ws.id}}" value="{{ws.id}}" {% if ws.id == userWorkshopIds[slot.slot] %}checked{% endif %}>
+        <label for="wsr-{{slot.slot}}-{{ws.id}}" class="{% if ws.free == 0 or (restricted and not ws.allowRestricted) %}disabled{% endif %}">{{ws.title}} ({{ws.free}} freie Plätze)</label><br>
+        {% endfor %}
+        <br><br>
+      {% endfor %}
+      <div class="right"><a class="btn warning small" style="float: left; margin-top: 8px;" href="/admin/deleteperson/{{user.id}}?users=1">Nutzer löschen</a> <button type="submit">speichern</button></div>
+    </form>
+  </div>
+
+{% endblock %}

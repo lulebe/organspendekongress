@@ -1,0 +1,28 @@
+{% extends "base.twig" %}
+
+{% block title %}Admin: Teilnehmer{% endblock %}
+
+{% block content %}
+  
+  <div class="main-wrapper">
+    <a href="/admin">&larr; Admin-Startseite</a>
+    <h1>Teilnehmer</h1>
+    <ul>
+      {% for user in users %}
+        <li>
+          <span class="tooltip">
+            {{user.fullName}}
+            <span class="tooltiptext">
+              <br>
+              {% for ws in user.Workshops %}
+              {{ws.title}}<br><br>
+              {% endfor %}
+            </span>
+          </span> <small>({{user.email}})</small> - 
+          <a href="/admin/users/{{user.id}}">Details</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+{% endblock %}

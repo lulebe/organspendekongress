@@ -31,7 +31,10 @@ router.get('/admin/toggleworkshopsrestricted', [adminHandler], require('./routes
 router.get('/admin/deleteworkshop', [adminHandler], require('./routes/admin/deleteworkshop'))
 router.get('/admin/addworkshop', [adminHandler], require('./routes/admin/addworkshop'))
 router.post('/admin/addworkshop', [adminHandler, bodyParser], require('./routes/admin/addworkshop_post'))
-router.get('/admin/deleteperson/:workshopId/:userId', [adminHandler], require('./routes/admin/deleteperson'))
+router.get('/admin/deleteperson/:userId', [adminHandler], require('./routes/admin/deleteperson'))
+router.get('/admin/users', [adminHandler], require('./routes/admin/users'))
+router.get('/admin/users/:userId', [adminHandler], require('./routes/admin/userdetails'))
+router.post('/admin/users/:userId', [adminHandler, bodyParser], require('./routes/admin/userdetails_post'))
 router.get('/admin/editmd', [adminHandler], require('./routes/admin/editmd'))
 router.post('/admin/editmd', [adminHandler, bodyParser], require('./routes/admin/editmd_post'))
 
