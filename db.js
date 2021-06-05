@@ -58,6 +58,11 @@ const Workshop = sequelize.define('Workshop', {
   maxPeople: {
     type: DataTypes.INTEGER,
     allowNull: false
+  },
+  allowRestricted: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+    defaultValue: true
   }
 })
 

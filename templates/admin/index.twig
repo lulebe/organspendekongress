@@ -22,6 +22,14 @@
     Momentan ist die Workshopanmeldung {% if workshopsopen %}geöffnet{% else %}geschlossen{% endif %}.
     <br><br>
     <a href="/admin/toggleworkshopsopen">Anmeldung jetzt {% if workshopsopen %}schließen{% else %}öffnen{% endif %}</a>
+    <br><br>
+    Momentan ist die Workshopanmeldung {% if workshopsrestricted %}beschränkt{% else %}unbeschränkt{% endif %}.
+    <br><br>
+    <a href="/admin/toggleworkshopsrestricted">{% if workshopsrestricted %}Beschränkung aufheben{% else %}Anmeldung beschränken{% endif %}</a>
+    <p>
+      Beschränkung heißt, dass eine Anmeldung nur in Workshops möglich ist, die als "Anmeldung erlaubt, wenn beschränkt" markiert sind.
+      Dies kann in den Workshopdetails eingestellt werden.
+    </p>
   </div>
 
   <div class="main-wrapper">

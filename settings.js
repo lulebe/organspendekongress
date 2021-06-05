@@ -10,7 +10,8 @@ async function init () {
     settings = JSON.parse(settingsFile)
   } catch (e) {
     settings = {
-      workshopsopen: false
+      workshopsopen: false,
+      workshopsrestricted: false
     }
     await fs.writeFile('./settings.json', JSON.stringify(settings))
   }
