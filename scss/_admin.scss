@@ -47,7 +47,12 @@ ul.workshop-list-admin {
 }
 
 .admin-user-list {
+  list-style: none;
+  padding: 0;
   li {
-    margin: 6px 0;
+    margin: 8px;
+    &:nth-child(even) {
+      background: #ccc;
+    }
   }
 }
