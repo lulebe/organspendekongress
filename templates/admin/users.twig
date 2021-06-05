@@ -19,8 +19,8 @@
               {{ws.title}}<br><br>
               {% endfor %}
             </span>
-          </span> <small>({{user.email}})</small> - 
-          <a href="/admin/users/{{user.id}}">Details</a>
+          </span> <small>({{user.email}})</small>
+          <a href="/admin/users/{{user.id}}" class="detaillink">Details</a>
         </li>
       {% endfor %}
     </ul>

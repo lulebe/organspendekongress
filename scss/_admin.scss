@@ -54,5 +54,13 @@ ul.workshop-list-admin {
     &:nth-child(even) {
       background: #ccc;
     }
+    &::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+    .detaillink {
+      float: right;
+    }
   }
 }
