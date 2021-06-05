@@ -1,5 +1,6 @@
 const tmpl = require.main.require('./templates')
 const { Workshop, User } = require.main.require('./db')
+const settings = require.main.require('./settings')
 
 
 module.exports = async (req, res) => {
@@ -16,7 +17,8 @@ module.exports = async (req, res) => {
   })
   const opts = {
     workshops,
-    error: req.query.error
+    error: req.query.error,
+    restricted: settings.get('workshopsrestricted')
   }
   tmpl.render('registerworkshops.twig', opts).then(rendered => res.end(rendered))
 }

@@ -11,6 +11,8 @@ module.exports = async (req, res) => {
     ws.host = req.body.host || null
     ws.slot = req.body.slot
     ws.maxPeople = req.body.people
+    ws.allowRestricted = !!req.body.allowrestricted
+    console.log(req.body)
     await ws.save()
   } else
     await Workshop.create({

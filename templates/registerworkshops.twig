@@ -47,8 +47,8 @@
       {% for slot in workshops %}
         <strong>Slot {{slot.slot}}</strong><br><br>
         {% for ws in slot.workshops %}
-        <input type="radio" class="ako-inp" name="slot{{slot.slot}}" id="wsr-{{slot.slot}}-{{ws.id}}" value="{{ws.id}}" {% if ws.free == 0 %}disabled{% endif %}>
-        <label for="wsr-{{slot.slot}}-{{ws.id}}" class="{% if ws.free == 0 %}disabled{% endif %} {% if ws.free <= 2 and ws.free > 0 %}rare{% endif %}">{{ws.title}} (freie Plätze: {{ws.free}})</label><br>
+        <input type="radio" class="ako-inp" name="slot{{slot.slot}}" id="wsr-{{slot.slot}}-{{ws.id}}" value="{{ws.id}}" {% if ws.free == 0 or (restricted and not ws.allowRestricted) %}disabled{% endif %}>
+        <label for="wsr-{{slot.slot}}-{{ws.id}}" class="{% if ws.free == 0 or (restricted and not ws.allowRestricted) %}disabled{% endif %}">{{ws.title}}</label><br>
         {% endfor %}
         <br><br>
       {% endfor %}

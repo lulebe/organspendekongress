@@ -23,6 +23,9 @@
       <br><br>
       <label for="inp-people">maximale Teilnemer:</label>
       <input type="number" name="people" id="inp-people" class="ako-inp" value="{% if workshop %}{{workshop.maxPeople}}{% else %}10{% endif %}" min="5" max="50">
+      <input type="checkbox" name="allowrestricted" id="inp-restricted" class="ako-inp" {% if workshop.allowRestricted %}checked{% endif %}>
+      <label for="inp-restricted">Anmeldung erlaubt, wenn beschränkt</label>
+      <br><br>
       <button type="submit">speichern</button>
     </form>
     <br><br>
