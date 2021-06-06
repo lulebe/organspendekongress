@@ -39,7 +39,7 @@
     <small><em>Einen Nutzer zu löschen entfernt ihn aus allen Workshops.</em></small>
     <ul>
       {% for p in people %}
-        <li>{{p.fullName}} (<small>{{p.email}}</small>) - <a href="/admin/deleteperson/{{p.id}}?ws={{workshop.id}}" style="color: #f66">Nutzer löschen</a></li>
+        <li><a href="/admin/users/{{p.id}}?ws={{workshop.id}}">{{p.fullName}}</a> (<small>{{p.email}}</small>)</li>
       {% endfor %}
     </ul>
     {% endif %}

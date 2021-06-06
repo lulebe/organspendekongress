@@ -21,7 +21,11 @@ module.exports = async (req, res) => {
   const userWorkshopIds = []
   user.Workshops.forEach(ws => userWorkshopIds[ws.slot] = ws.id)
   const opts = {
-    user, workshops, userWorkshopIds, restricted: settings.get('workshopsrestricted')
+    user,
+    workshops,
+    userWorkshopIds,
+    restricted: settings.get('workshopsrestricted'),
+    fromWorkshop: req.query.ws
   }
   tmpl.render('admin/userdetails.twig', opts).then(rendered => res.end(rendered))
 }

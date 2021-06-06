@@ -5,7 +5,11 @@
 {% block content %}
   
   <div class="main-wrapper">
+    {% if fromWorkshop %}
+    <a href="/admin/addworkshop?id={{fromWorkshop}}">&larr; zum Workshop</a>
+    {% else %}
     <a href="/admin/users">&larr; alle Teilnehmer</a>
+    {% endif %}
     <h1>{{user.fullName}}</h1>
 
     <form action="/admin/users/{{user.id}}" method="POST">
